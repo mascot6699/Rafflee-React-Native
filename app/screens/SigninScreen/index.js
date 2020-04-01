@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Image, Keyboard } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Keyboard, KeyboardAvoidingView, ScrollView } from 'react-native'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
 import * as Yup from 'yup'
@@ -64,7 +64,9 @@ const SigninScreen = () => {
   }
 
   return (
+    
     <TouchableOpacity style={{ flex: 1 }} onPress={Keyboard.dismiss} activeOpacity={1}>
+      <KeyboardAvoidingView behavior='height' style={styles.keyboardView}>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00A2FB', '#687def']} style={{ flex: 1 }}>
@@ -96,8 +98,9 @@ const SigninScreen = () => {
               setFieldTouched,
             }) => {
               return (
+                
                 <Form style={styles.formContainer}>
-                  <View>
+                  <ScrollView>
                     <InputField
                       label="Email"
                       name="email"
@@ -149,7 +152,7 @@ const SigninScreen = () => {
                       labelStyle={styles.labelStyle}
                       inputStyle={styles.inputStyle}
                     />
-                  </View>
+                  </ScrollView>
                   <View>
                     <Button 
                       onPress={handleSubmit}
@@ -164,11 +167,13 @@ const SigninScreen = () => {
                     </Text>
                   </View>
                 </Form>
+                
               )
             }}
           </Formik>
         </View>
       </View>
+      </KeyboardAvoidingView>
     </TouchableOpacity>
 
   )

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginLeft: scaleWidth(25),
-    marginRight: scaleWidth(25)
+    marginRight: scaleWidth(25),
   },
   itemContainer: {
     paddingTop: scaleHeight(20),

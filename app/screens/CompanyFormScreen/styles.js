@@ -1,11 +1,17 @@
 import { Colors, Typography } from '../../utils/styles'
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet, Platform, Dimensions } from 'react-native'
 import { scaleHeight, scaleWidth } from '../../utils/styles/mixins'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.WHITE
+    backgroundColor: Colors.WHITE,
+    width: Dimensions.get('window').width
+  },
+  keyboardView: {
+    flex: 1, 
+    alignItems: 'center', 
+    backgroundColor: 'white'
   },
   headerContainer: {
     height: scaleHeight(100)

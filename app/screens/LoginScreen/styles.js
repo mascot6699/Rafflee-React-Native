@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   forgotContainer: {
     flexDirection: 'row', 
     justifyContent: 'space-between', 
-    marginTop: scaleHeight(0),
   },
   checkBoxContainer: {
     margin: 0,

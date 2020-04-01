@@ -80,8 +80,8 @@ export function resetPasswordRequest(params) {
   });
 }
 function onSuccessResetPasswordRequest(data) {
-  console.log('reset password success')
-  openNotification('success', 'Confirm your Email to reset a password')
+  
+  openNotification('success', 'Confirm')
   return {
     type: '',
     flag: ''
