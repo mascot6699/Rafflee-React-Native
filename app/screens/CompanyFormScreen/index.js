@@ -68,11 +68,11 @@ const CompanyFormScreen = () => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00A2FB', '#687def']} style={{ flex: 1 }}>
-            <View>
-              <Text style={styles.headerText}>Company Form</Text>
-              <TouchableWithoutFeedback onPress={goBack} style={{ position: 'absolute' }}>
+            <View style={styles.header}>
+              <TouchableOpacity onPress={goBack}>
                 <Image style={styles.whiteLeftArrow} source={images.white_left_arrow} />
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
+              <Text style={styles.headerText}>Company Form</Text>
             </View>
           </LinearGradient>
         </View>

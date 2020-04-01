@@ -10,17 +10,20 @@ const styles = StyleSheet.create({
   headerContainer: {
     height: scaleHeight(100)
   },
+  header: {
+    flexDirection: 'row',
+    marginTop: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(37), 
+    marginLeft: scaleHeight(25), 
+    marginRight: scaleHeight(35)
+  },
   headerText: {
+    flex: 1,
     fontSize: Typography.FONT_SIZE_20,
     fontFamily: Typography.FONT_FAMILY_BOLD,
     color: Colors.WHITE,
-    marginTop: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(37),
-    textAlign: "center",
+    textAlign: 'center'
   },
   whiteLeftArrow: {
-    position: 'absolute',
-    left: scaleWidth(25),
-    top: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(40),
     width: scaleHeight(10),
     height: scaleHeight(20)
   },

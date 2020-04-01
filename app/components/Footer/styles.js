@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
   },
   footerImg: {
     width: scaleHeight(18),
-    height: scaleHeight(20)
+    height: scaleHeight(20),
+    resizeMode: 'stretch'
   }
 })
 

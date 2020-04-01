@@ -4,7 +4,6 @@ import { View, Image, TouchableOpacity } from 'react-native'
 import { NavigationActions } from "react-navigation"
 import styles from './styles'
 import images from '../../utils/images'
-import { navigationMiddleware } from '../../middleware/nav'
 
 const Footer = (props) => {
   const { tab } = props
@@ -18,6 +17,9 @@ const Footer = (props) => {
         break
       case 'dashboard':
         dispatch(NavigationActions.navigate({ routeName: 'AuthScreen' }))
+        break
+      case 'profile':
+        dispatch(NavigationActions.navigate({ routeName: 'ProfileSummaryScreen' }))
         break
     }
 
@@ -47,6 +49,7 @@ const Footer = (props) => {
 
       <TouchableOpacity
         style={tab === 'profile' ? styles.activeFooterImgContainer : styles.footerImgContainer}
+        onPress={() => onChangeFooterTab('profile')}
       >
         <Image style={styles.footerImg} source={tab === 'profile' ? images.footer_profile_active : images.footer_profile} />
       </TouchableOpacity>

@@ -32,35 +32,10 @@ const styles = StyleSheet.create({
     height: scaleHeight(20),
     resizeMode: 'stretch'
   },
-  tabContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: scaleHeight(76),
-    paddingLeft: scaleWidth(25),
-    paddingRight: scaleWidth(25),
+  profileImgContainer: {
+    height: scaleHeight(160),
     backgroundColor: Colors.WHITE
-  },
-  tabText: {
-    fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_16,
-    color: Colors.GRAY_LIGHT
-  },
-  blueTabText: {
-    fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_16,
-    color: Colors.BLUE
-  },
-  scrollView: {
-    marginLeft: scaleWidth(25),
-    marginRight: scaleWidth(25)
-  },
-  itemContainer: {
-    paddingTop: scaleHeight(20),
-    paddingBottom: scaleHeight(20),
-    borderBottomColor: '#d0d0d280',
-    borderBottomWidth: 1
-  },
+  }
 })
 
 export default styles

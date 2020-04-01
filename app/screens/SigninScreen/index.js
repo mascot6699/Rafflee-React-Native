@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Keyboard, KeyboardAvoidingView, Platform } from 'react-native'
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Image, Keyboard } from 'react-native'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
 import * as Yup from 'yup'
@@ -45,6 +45,7 @@ const SigninScreen = () => {
   const dispatch = useDispatch()
 
   goBack = () => {
+    console.log('goBack')
     dispatch(NavigationActions.back())
   }
 
@@ -67,11 +68,11 @@ const SigninScreen = () => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00A2FB', '#687def']} style={{ flex: 1 }}>
-            <View>
-              <Text style={styles.headerText}>Register</Text>
-              <TouchableWithoutFeedback onPress={goBack} style={{ position: 'absolute' }}>
+            <View style={styles.header}>
+              <TouchableOpacity onPress={goBack}>
                 <Image style={styles.whiteLeftArrow} source={images.white_left_arrow} />
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
+              <Text style={styles.headerText}>Register</Text>
             </View>
           </LinearGradient>
         </View>

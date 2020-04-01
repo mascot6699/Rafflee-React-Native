@@ -17,9 +17,11 @@ const MainScreen = () => {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#00A2FB', '#687def']} style={{flex: 1}}>
-          <View>
+          <View style={styles.header}>
             <Text style={styles.headerText}>Deals</Text>
-            <Image style={styles.searchImg} source={images.header_search} />
+            <TouchableOpacity>
+              <Image style={styles.searchImg} source={images.header_search} />
+            </TouchableOpacity>
           </View>
         </LinearGradient>
       </View>
