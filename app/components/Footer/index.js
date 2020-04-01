@@ -7,12 +7,12 @@ import images from '../../utils/images'
 import { navigationMiddleware } from '../../middleware/nav'
 
 const Footer = (props) => {
-  const { currentTab } = props
+  const { tab } = props
 
   const dispatch = useDispatch()
 
-  onChangeTab = (tab) => {
-    switch (tab) {
+  onChangeFooterTab = (val) => {
+    switch (val) {
       case 'home':
         dispatch(NavigationActions.navigate({ routeName: 'MainScreen' }))
         break
@@ -26,29 +26,29 @@ const Footer = (props) => {
   return (
     <View style={styles.footerContainer}>
       <TouchableOpacity
-        style={currentTab === 'home' ? styles.activeFooterImgContainer : styles.footerImgContainer}
-        onPress={() => onChangeTab('home')}
+        style={tab === 'home' ? styles.activeFooterImgContainer : styles.footerImgContainer}
+        onPress={() => onChangeFooterTab('home')}
       >
-        <Image style={styles.footerImg} source={currentTab === 'home' ? images.footer_home_active : images.footer_home} />
+        <Image style={styles.footerImg} source={tab === 'home' ? images.footer_home_active : images.footer_home} />
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={currentTab === 'category' ? styles.activeFooterImgContainer : styles.footerImgContainer}
+        style={tab === 'category' ? styles.activeFooterImgContainer : styles.footerImgContainer}
       >
-        <Image style={styles.footerImg} source={currentTab === 'category' ? images.footer_category_active : images.footer_category} />
+        <Image style={styles.footerImg} source={tab === 'category' ? images.footer_category_active : images.footer_category} />
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={currentTab === 'dashboard' ? styles.activeFooterImgContainer : styles.footerImgContainer}
-        onPress={() => onChangeTab('dashboard')}
+        style={tab === 'dashboard' ? styles.activeFooterImgContainer : styles.footerImgContainer}
+        onPress={() => onChangeFooterTab('dashboard')}
       >
-        <Image style={styles.footerImg} source={currentTab === 'dashboard' ? images.footer_dashboard_active : images.footer_dashboard} />
+        <Image style={styles.footerImg} source={tab === 'dashboard' ? images.footer_dashboard_active : images.footer_dashboard} />
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={currentTab === 'profile' ? styles.activeFooterImgContainer : styles.footerImgContainer}
+        style={tab === 'profile' ? styles.activeFooterImgContainer : styles.footerImgContainer}
       >
-        <Image style={styles.footerImg} source={currentTab === 'profile' ? images.footer_profile_active : images.footer_profile} />
+        <Image style={styles.footerImg} source={tab === 'profile' ? images.footer_profile_active : images.footer_profile} />
       </TouchableOpacity>
     </View>
   )

@@ -6,12 +6,13 @@ import { navigationMiddleware } from './app/middleware/nav'
 import AppNavigator from './app/navigators/AppNavigator'
 import AppReducer from './app/reducers/index'
 
-const store = createStore(AppReducer, applyMiddleware(apiMiddleware, navigationMiddleware))
+const createStoreWithMiddleware = applyMiddleware(apiMiddleware, navigationMiddleware)(createStore);
+
 
 export default class App extends Component{
   render(){
     return (
-        <Provider store = {store}>
+        <Provider store = {createStoreWithMiddleware(AppReducer)}>
               <AppNavigator/>
         </Provider>
     );

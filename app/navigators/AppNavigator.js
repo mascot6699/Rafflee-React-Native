@@ -12,12 +12,20 @@ import { addListener } from '../middleware/nav'
 
 import SplashScreen from '../screens/SplashScreen'
 import MainScreen from '../screens/MainScreen'
-import AuthScreen from '../screens/AuthScreen';
+import AuthScreen from '../screens/AuthScreen'
+import LoginScreen from '../screens/LoginScreen'
+import SigninScreen from '../screens/SigninScreen'
+import CompanyFormScreen from '../screens/CompanyFormScreen'
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen'
 
 export const AppNavigator = StackNavigator({
         SplashScreen: { screen: SplashScreen },
         MainScreen: { screen: MainScreen },
         AuthScreen: { screen: AuthScreen },
+        LoginScreen: { screen: LoginScreen },
+        SigninScreen: { screen: SigninScreen },
+        CompanyFormScreen: { screen: CompanyFormScreen },
+        ForgotPasswordScreen: { screen: ForgotPasswordScreen },
     },{
         headerMode: 'none',
     }
@@ -33,9 +41,9 @@ class AppWithNavigationState extends React.Component {
             const { dispatch, navigation, nav } = this.props;
 
             console.log(nav)
-            if(nav.index == 2) {
-                BackHandler.exitApp();
-            }
+            // if(nav.index == 2) {
+            //     BackHandler.exitApp();
+            // }
 
             dispatch({ type: 'Navigation/BACK' });
             return true;

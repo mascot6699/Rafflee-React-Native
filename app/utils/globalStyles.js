@@ -1,11 +1,11 @@
-import { Colors, Typography } from '../../../utils/styles'
+import { Colors, Typography } from './styles'
 import { StyleSheet } from 'react-native'
-import { scaleHeight, scaleWidth } from '../../../utils/styles/mixins'
+import { scaleHeight, scaleWidth } from './styles/mixins'
 
 const styles = StyleSheet.create({
-  btn: {
+  blueBtn: {
     width: '100%',
-    height: '100%',
+    height: scaleHeight(50),
     backgroundColor: Colors.BLUE_LIGHT,
     justifyContent: 'center',
     borderRadius: scaleHeight(6),
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.18,
     shadowRadius: 6.30,
   },
-  text: {
+  blueBtnText: {
     fontFamily: Typography.FONT_FAMILY_BOLD,
     fontSize: Typography.FONT_SIZE_18,
     color: Colors.WHITE

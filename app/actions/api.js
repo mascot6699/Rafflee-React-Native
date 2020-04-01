@@ -9,6 +9,6 @@ export const apiEnd = label => ({
 });
 
 export const apiSuccess = label => ({
-  type: API_SUCCESS,
+  type: 'API_SUCCESS',
   payload: `${label}_SUCCESS`
 });

@@ -1,5 +1,5 @@
 import { Colors, Typography } from '../../utils/styles'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import { scaleHeight, scaleWidth } from '../../utils/styles/mixins'
 
 const styles = StyleSheet.create({
@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   whiteLeftArrow: {
-    marginTop: scaleHeight(60),
+    marginTop: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(40),
     marginLeft: scaleWidth(25),
-    width: scaleHeight(6),
-    height: scaleHeight(12)
+    width: scaleHeight(10),
+    height: scaleHeight(20)
   },
   bottomContainer: {
     marginLeft: scaleWidth(25),
@@ -53,15 +53,15 @@ const styles = StyleSheet.create({
   },
   alreadyText: {
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_14,
+    fontSize: Typography.FONT_SIZE_16,
     color: Colors.GRAY_DARK,
     textAlign: 'center'
   },
   logInText: {
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_14,
+    fontSize: Typography.FONT_SIZE_16,
     color: Colors.BLUE,
-    textAlign: 'center'
+    textAlign: 'center',
   }
 })
 

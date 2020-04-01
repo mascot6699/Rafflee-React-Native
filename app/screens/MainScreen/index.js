@@ -7,11 +7,7 @@ import Footer from '../../components/Footer'
 import images from '../../utils/images'
 
 const MainScreen = () => {
-
   const [currentTab, setCurrentTab] = useState('highlights')
-
-  useEffect(() => {
-  }, [])
 
   onChangeTab = (val) => {
     setCurrentTab(val)
@@ -52,9 +48,12 @@ const MainScreen = () => {
           <View style={styles.itemContainer}>
             <CampaignItem />
           </View>
+          <View style={styles.itemContainer}>
+            <CampaignItem />
+          </View>
         </ScrollView>
       </View>
-      <Footer currentTab='home' />
+      <Footer tab='home' />
     </View>
   )
 }

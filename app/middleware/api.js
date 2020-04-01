@@ -5,7 +5,6 @@ const apiMiddleware = ({ dispatch }) => next => action => {
   next(action);
 
   if (action.type !== 'API') return;
-
   const {
     url,
     method,
@@ -23,8 +22,7 @@ const apiMiddleware = ({ dispatch }) => next => action => {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL || "";
   axios.defaults.headers.common["Content-Type"] = "application/x-www-form-urlencoded";
   if (accessToken){
-    if (label === 'SIGN_UP_SUCCESS')axios.defaults.headers.common["Authorization"] = accessToken;
-    else axios.defaults.headers.common["Authorization"] = `JWT ${accessToken}`;
+    axios.defaults.headers.common["Authorization"] = `JWT ${accessToken}`;
   }
   else axios.defaults.headers.common["Authorization"] = null;
     
@@ -40,12 +38,12 @@ const apiMiddleware = ({ dispatch }) => next => action => {
       [dataOrParams]: data
     })
     .then(({ data }) => {
-      console.log(data)
+      // console.log(data)
       dispatch(apiSuccess(label));
       dispatch(onSuccess(data));
     })
     .catch(error => {
-      console.log(error.response)
+      // console.log(error.response)
       if (requireErrorMessage) {
         if (error.response && error.response.data && error.response.data.msg) dispatch(onFailure(error.response.data.msg));
         else dispatch(onFailure(''));

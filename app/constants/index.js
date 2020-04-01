@@ -1,0 +1,1 @@
+export const APIROUTE = 'https://rafflee.io/api/'

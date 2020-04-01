@@ -1,5 +1,5 @@
 import { Colors, Typography } from '../../utils/styles'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import { scaleHeight, scaleWidth } from '../../utils/styles/mixins'
 
 const styles = StyleSheet.create({
@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
     fontSize: Typography.FONT_SIZE_20,
     fontFamily: Typography.FONT_FAMILY_BOLD,
     color: Colors.WHITE,
-    marginTop: scaleHeight(60),
+    marginTop: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(37),
     textAlign: "center",
   },
   searchImg: {
     position: 'absolute',
     right: scaleWidth(25),
-    top: scaleHeight(60),
+    top: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(40),
     width: scaleHeight(20),
     height: scaleHeight(20)
   },

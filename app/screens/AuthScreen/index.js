@@ -2,9 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native'
+import { Button } from 'native-base'
 import styles from './styles'
+import globalStyles from '../../utils/globalStyles'
 import images from '../../utils/images'
-import BlueButton from '../../components/Basic/BlueButton'
+
 
 const AuthScreen = () => {
 
@@ -12,6 +14,14 @@ const AuthScreen = () => {
 
   goBack = () => {
     dispatch(NavigationActions.back())
+  }
+
+  goToLogin = () => {
+    dispatch(NavigationActions.navigate({routeName: 'LoginScreen'}))
+  }
+
+  goToSignIn = () => {
+    dispatch(NavigationActions.navigate({routeName: 'SigninScreen'}))
   }
 
   return (
@@ -31,12 +41,14 @@ const AuthScreen = () => {
           </View>
         </View>
         <View style={styles.signInBtnContainer}>
-          <BlueButton text="Sign In" />
+          <Button style={globalStyles.blueBtn} onPress={goToSignIn}>
+            <Text style={globalStyles.blueBtnText}>Sign In</Text>
+          </Button>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.alreadyText}>
-            Already have an account? 
-            <Text style={styles.logInText}> Login</Text>
+            Already have an account?  
+            <Text style={styles.logInText} onPress={goToLogin}>  Login</Text>
           </Text>
         </View>
       </View>
