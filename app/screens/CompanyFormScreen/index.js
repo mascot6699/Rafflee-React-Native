@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import { View, Text, TouchableOpacity, Image, Keyboard, KeyboardAvoidingView, ScrollView } from 'react-native'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
@@ -43,13 +42,13 @@ const validationSchema = Yup.object().shape({
     .required('Message is required')
 })
 
-const CompanyFormScreen = () => {
+const CompanyFormScreen = ({ navigation }) => {
 
   const COMPANY_CONTACT_PROCESS = useSelector(state => state.userInfo.COMPANY_CONTACT)
   const dispatch = useDispatch()
 
   goBack = () => {
-    dispatch(NavigationActions.back())
+    navigation.goBack()
   }
 
   onSubmit = (values) => {

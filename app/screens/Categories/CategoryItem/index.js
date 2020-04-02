@@ -1,16 +1,17 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import images from '../../../utils/images'
 
 const CategoryItem = (props) => {
   const { item } = props
+  const navigation = useNavigation()
   const dispatch = useDispatch()
 
   findPromotions = () => {
-    dispatch(NavigationActions.navigate({routeName: 'CategorySearchScreen', params: {categoryName: item.name}}))
+    navigation.navigate('CategorySearchScreen', { categoryName: item.name })
   }
   return (
     <TouchableOpacity onPress={findPromotions} activeOpacity={0.8}>
@@ -21,7 +22,7 @@ const CategoryItem = (props) => {
         </View>
       </View>
     </TouchableOpacity>
-    
+
   )
 }
 

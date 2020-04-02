@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native'
 import { Button } from 'native-base'
 import styles from './styles'
@@ -8,20 +7,20 @@ import globalStyles from '../../utils/globalStyles'
 import images from '../../utils/images'
 
 
-const AuthScreen = () => {
-
+const AuthScreen = (props) => {
+  const { navigation } = props
   const dispatch = useDispatch()
 
   goBack = () => {
-    dispatch(NavigationActions.back())
+    navigation.goBack()
   }
 
   goToLogin = () => {
-    dispatch(NavigationActions.navigate({routeName: 'LoginScreen'}))
+    navigation.navigate('LoginScreen')
   }
 
   goToSignIn = () => {
-    dispatch(NavigationActions.navigate({routeName: 'SigninScreen'}))
+    navigation.navigate('SigninScreen')
   }
 
   return (

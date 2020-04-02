@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import { View, Text, TouchableOpacity, Image, Keyboard, KeyboardAvoidingView, ScrollView } from 'react-native'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
@@ -39,13 +38,13 @@ const validationSchema = Yup.object().shape({
     .min(2, "Please input correct password")
 })
 
-const SigninScreen = () => {
-
+const SigninScreen = (props) => {
+  const { navigation } = props
   const SIGN_UP_PROCESS = useSelector(state => state.userInfo.SIGN_UP)
   const dispatch = useDispatch()
 
   goBack = () => {
-    dispatch(NavigationActions.back())
+    navigation.goBack()
   }
 
   onSubmit = (values) => {
@@ -59,7 +58,7 @@ const SigninScreen = () => {
   }
 
   goToCompanyForm = () => {
-    dispatch(NavigationActions.navigate({routeName: 'CompanyFormScreen'}))
+    navigation.navigate('CompanyFormScreen')
   }
 
   return (

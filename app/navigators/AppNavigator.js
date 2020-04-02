@@ -1,14 +1,10 @@
 
 import React from 'react';
-import { connect } from 'react-redux';
-import {
-  StackNavigator,
-  addNavigationHelpers,
-  DrawerNavigator
-} from 'react-navigation';
-import { BackHandler } from 'react-native'
+import { useSelector } from 'react-redux'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { addListener } from '../middleware/nav'
+import { BackHandler } from 'react-native'
 
 import SplashScreen from '../screens/SplashScreen'
 import MainScreen from '../screens/MainScreen'
@@ -21,51 +17,26 @@ import ProfileSummaryScreen from '../screens/ProfileScreens'
 import CategoriesScreen from '../screens/Categories'
 import CategorySearchScreen from '../screens/Categories/CategorySearch'
 
-export const AppNavigator = StackNavigator({
-  SplashScreen: { screen: SplashScreen },
-  MainScreen: { screen: MainScreen },
-  AuthScreen: { screen: AuthScreen },
-  LoginScreen: { screen: LoginScreen },
-  SigninScreen: { screen: SigninScreen },
-  CompanyFormScreen: { screen: CompanyFormScreen },
-  ForgotPasswordScreen: { screen: ForgotPasswordScreen },
-  ProfileSummaryScreen: { screen: ProfileSummaryScreen },
-  CategoriesScreen: { screen: CategoriesScreen },
-  CategorySearchScreen: { screen: CategorySearchScreen },
-}, {
-  headerMode: 'none',
+const Stack = createStackNavigator();
+
+function App() {
+  const token = useSelector(state => state.userInfo.token)
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ProfileSummaryScreen" component={ProfileSummaryScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="CategorySearchScreen" component={CategorySearchScreen} options={{ headerShown: false }} />
+        {!token && <Stack.Screen name="AuthScreen" component={AuthScreen} options={{ headerShown: false }} />}
+        {!token && <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />}
+        {!token && <Stack.Screen name="SigninScreen" component={SigninScreen} options={{ headerShown: false }} />}
+        {!token && <Stack.Screen name="CompanyFormScreen" component={CompanyFormScreen} options={{ headerShown: false }} />}
+        {!token && <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} options={{ headerShown: false }} />}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-);
 
-class AppWithNavigationState extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', function () {
-      const { dispatch, navigation, nav, token } = this.props;
-      if (nav.index === 1) {
-        BackHandler.exitApp();
-      }
-      dispatch({ type: 'Navigation/BACK' });
-      return true;
-    }.bind(this));
-  }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress');
-  }
-
-  render() {
-    return <AppNavigator navigation={addNavigationHelpers({ dispatch: this.props.dispatch, state: this.props.nav, addListener })} />
-  }
-}
-const mapStateToProps = (state) => {
-  return {
-    nav: state.nav,
-  }
-};
-
-const A = connect(mapStateToProps)(AppWithNavigationState);
-export default A;
+export default App;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Keyboard, KeyboardAvoidingView, Platform } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
+import { View, Text, TouchableOpacity, Image, Keyboard } from 'react-native'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
 import * as Yup from 'yup'
@@ -35,7 +35,8 @@ const validationSchema = Yup.object().shape({
 })
 
 const LoginScreen = (props) => {
-
+  const { navigation } = props
+  const isFocused = useIsFocused()
   const LOG_IN_PROCESS = useSelector(state => state.userInfo.LOG_IN)
   const LOG_IN_SUCCESS = useSelector(state => state.userInfo.LOG_IN_SUCCESS)
   const token = useSelector(state => state.userInfo.token)
@@ -44,16 +45,18 @@ const LoginScreen = (props) => {
   useEffect(() => {
     if (LOG_IN_SUCCESS) {
       dispatch({ type: 'INIT_STATE', state: 'LOG_IN_SUCCESS', data: false })
-      dispatch(NavigationActions.navigate({ routeName: 'ProfileSummaryScreen' }))
+      navigation.navigate('ProfileSummaryScreen')
     }
   }, [LOG_IN_SUCCESS])
 
-  // useEffect(() => {
-  //   if (token) dispatch(NavigationActions.back())
-  // }, [token])
+  useEffect(() => {
+      // if (isFocused) {
+      //   if (token) navigation.goBack()
+      // }
+  }, [isFocused])
 
   goBack = () => {
-    dispatch(NavigationActions.back())
+    navigation.goBack()
   }
 
   onSubmit = (values) => {
@@ -67,11 +70,11 @@ const LoginScreen = (props) => {
   }
 
   goToForgotPassword = () => {
-    dispatch(NavigationActions.navigate({ routeName: 'ForgotPasswordScreen' }))
+    navigation.navigate('ForgotPasswordScreen')
   }
 
   goToSignIn = () => {
-    dispatch(NavigationActions.navigate({ routeName: 'SigninScreen' }))
+    navigation.navigate('SigninScreen')
   }
 
   return (

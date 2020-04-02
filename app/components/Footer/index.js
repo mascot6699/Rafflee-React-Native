@@ -1,28 +1,28 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { View, Image, TouchableOpacity } from 'react-native'
-import { NavigationActions } from "react-navigation"
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles'
 import images from '../../utils/images'
 
 const Footer = (props) => {
   const { tab } = props
-
+  const navigation = useNavigation()
   const dispatch = useDispatch()
 
   onChangeFooterTab = (val) => {
     switch (val) {
       case 'home':
-        dispatch(NavigationActions.navigate({ routeName: 'MainScreen' }))
+        navigation.navigate('MainScreen')
         break
       case 'category':
-        dispatch(NavigationActions.navigate({ routeName: 'CategoriesScreen' }))
+        navigation.navigate('CategoriesScreen')
         break
       case 'dashboard':
-        dispatch(NavigationActions.navigate({ routeName: 'AuthScreen' }))
+        navigation.navigate('AuthScreen')
         break
       case 'profile':
-        dispatch(NavigationActions.navigate({ routeName: 'ProfileSummaryScreen' }))
+        navigation.navigate('ProfileSummaryScreen')
         break
     }
 

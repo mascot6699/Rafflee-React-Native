@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import CampaignItem from '../../../components/CampaignItem'
@@ -9,12 +8,13 @@ import Footer from '../../../components/Footer'
 import images from '../../../utils/images'
 
 const CategorySearchScreen = (props) => {
-  const categoryName = props.navigation.state.params.categoryName
+  const { route, navigation } = props
+  const categoryName = route.params.categoryName
   const allPromotions = useSelector(state => state.homepage.allPromotions)
   const dispatch = useDispatch()
 
   goBack = () => {
-    dispatch(NavigationActions.back())
+    navigation.goBack()
   }
 
   const filter = (list) => {

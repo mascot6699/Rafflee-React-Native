@@ -14,7 +14,7 @@ import styles from './styles'
 import Footer from '../../components/Footer'
 import images from '../../utils/images'
 
-const MainScreen = () => {
+const MainScreen = ({ navigation }) => {
   const [currentTab, setCurrentTab] = useState('highlight')
 
   const hotPromotions = useSelector(state => state.homepage.hotPromotions)

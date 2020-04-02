@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavigationActions } from 'react-navigation'
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Keyboard, KeyboardAvoidingView, Platform } from 'react-native'
 import { Formik } from 'formik'
 import { compose } from 'recompose'
@@ -31,13 +30,13 @@ const validationSchema = Yup.object().shape({
     .email("This is not an email"),
 })
 
-const ForgotPasswordScreen = () => {
+const ForgotPasswordScreen = ({ navigation }) => {
 
   const RESET_PASSWORD_REQUEST_PROCESS = useSelector(state => state.userInfo.RESET_PASSWORD_REQUEST)
   const dispatch = useDispatch()
 
   goBack = () => {
-    dispatch(NavigationActions.back())
+    navigation.goBack()
   }
 
   onSubmit = (values) => {
