@@ -45,7 +45,6 @@ const SigninScreen = () => {
   const dispatch = useDispatch()
 
   goBack = () => {
-    console.log('goBack')
     dispatch(NavigationActions.back())
   }
 
@@ -64,7 +63,6 @@ const SigninScreen = () => {
   }
 
   return (
-    
     <TouchableOpacity style={{ flex: 1 }} onPress={Keyboard.dismiss} activeOpacity={1}>
       <KeyboardAvoidingView behavior='height' style={styles.keyboardView}>
       <View style={styles.container}>

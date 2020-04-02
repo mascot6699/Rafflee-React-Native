@@ -18,6 +18,8 @@ import SigninScreen from '../screens/SigninScreen'
 import CompanyFormScreen from '../screens/CompanyFormScreen'
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen'
 import ProfileSummaryScreen from '../screens/ProfileScreens'
+import CategoriesScreen from '../screens/Categories'
+import CategorySearchScreen from '../screens/Categories/CategorySearch'
 
 export const AppNavigator = StackNavigator({
   SplashScreen: { screen: SplashScreen },
@@ -28,6 +30,8 @@ export const AppNavigator = StackNavigator({
   CompanyFormScreen: { screen: CompanyFormScreen },
   ForgotPasswordScreen: { screen: ForgotPasswordScreen },
   ProfileSummaryScreen: { screen: ProfileSummaryScreen },
+  CategoriesScreen: { screen: CategoriesScreen },
+  CategorySearchScreen: { screen: CategorySearchScreen },
 }, {
   headerMode: 'none',
 }
@@ -40,9 +44,8 @@ class AppWithNavigationState extends React.Component {
 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', function () {
-      const { dispatch, navigation, nav } = this.props;
-      // console.log(nav)
-      if (nav.index == 1) {
+      const { dispatch, navigation, nav, token } = this.props;
+      if (nav.index === 1) {
         BackHandler.exitApp();
       }
       dispatch({ type: 'Navigation/BACK' });
@@ -60,7 +63,7 @@ class AppWithNavigationState extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    nav: state.nav
+    nav: state.nav,
   }
 };
 

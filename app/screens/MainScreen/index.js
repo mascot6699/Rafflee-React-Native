@@ -59,23 +59,13 @@ const MainScreen = () => {
   }
 
   renderPromotionList = () => {
-    // promotionList[currentTab]
     return (
-      <>
-      <View style={styles.itemContainer}>
-        <CampaignItem />
+      (promotionList[currentTab] || []).map((item, index) => 
+      <View key={index} style={styles.itemContainer}>
+        <CampaignItem item={item} />
       </View>
-      <View style={styles.itemContainer}>
-        <CampaignItem />
-      </View>
-      <View style={styles.itemContainer}>
-        <CampaignItem />
-      </View>
-      <View style={styles.itemContainer}>
-        <CampaignItem />
-      </View>
-      </>
-    ) 
+      )
+    )
   }
 
   return (

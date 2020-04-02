@@ -15,6 +15,9 @@ const Footer = (props) => {
       case 'home':
         dispatch(NavigationActions.navigate({ routeName: 'MainScreen' }))
         break
+      case 'category':
+        dispatch(NavigationActions.navigate({ routeName: 'CategoriesScreen' }))
+        break
       case 'dashboard':
         dispatch(NavigationActions.navigate({ routeName: 'AuthScreen' }))
         break
@@ -36,6 +39,7 @@ const Footer = (props) => {
 
       <TouchableOpacity
         style={tab === 'category' ? styles.activeFooterImgContainer : styles.footerImgContainer}
+        onPress={() => onChangeFooterTab('category')}
       >
         <Image style={styles.footerImg} source={tab === 'category' ? images.footer_category_active : images.footer_category} />
       </TouchableOpacity>

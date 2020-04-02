@@ -11,9 +11,25 @@ function onFailed(error) {
   }
 }
 
+/////////////////////////////////////////////// GET_ALL_PROMOTIONS_ACTION
+export function getAllPromotions(params) {
+  return apiAction({
+      url: APIROUTE + "campaign/all-campaigns/",
+      method: 'POST',
+      data: qs.stringify(params),
+      onSuccess: onSuccessGetAllPromotions,
+      onFailure: onFailed,
+      label: 'GET_ALL_PROMOTIONS',
+  });
+}
+function onSuccessGetAllPromotions(data) {
+  return {
+      type: 'SET_ALL_PROMOTIONS',
+      data: data.result_data
+  }
+}
 /////////////////////////////////////////////// GET_HOT_PROMOTIONS_ACTION
 export function getHotPromotions(params) {
-  console.log('dispatched hot actions')
   return apiAction({
       url: APIROUTE + "homepage/hot/",
       method: 'POST',
@@ -31,7 +47,6 @@ function onSuccessGetHotPromotions(data) {
 }
 /////////////////////////////////////////////// GET_HIGHLIGHTED_PROMOTIONS_ACTION
 export function getHighlightedPromotions(params) {
-  console.log('dispatched highlighted actions')
   return apiAction({
       url: APIROUTE + "homepage/highlights/",
       method: 'POST',
@@ -78,6 +93,21 @@ export function getBestPromotions(params) {
 function onSuccessGetBestPromotions(data) {
   return {
       type: 'SET_BEST_PROMOTIONS',
+      data: data.result_data
+  }
+}
+/////////////////////////////////////////////// GET_CATEGORIES_ACTION
+export function getCategories() {
+  return apiAction({
+      url: APIROUTE + "categories/",
+      onSuccess: onSuccessGetCategories,
+      onFailure: onFailed,
+      label: 'GET_CATEGORIES',
+  });
+}
+function onSuccessGetCategories(data) {
+  return {
+      type: 'SET_CATEGORIES',
       data: data.result_data
   }
 }

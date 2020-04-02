@@ -5,23 +5,29 @@ import images from '../../utils/images'
 import styles from './styles'
 import { scaleHeight } from '../../utils/styles/mixins'
 
-const CampaignItem = () => {
+const CampaignItem = (props) => {
+  const { item } = props
+
+  renderWinnings = () => {
+    return (
+      (item.winnings || []).map((name, index) =>
+        <WinningText key={index} name={name} />
+      )
+    )
+  }
   return (
-    <View style = {styles.container}>
-      <Image source={images.campaign_profile} style={styles.campaignImg} />
+    <View style={styles.container}>
+      <Image source={item.campaign_image ? { uri: item.campaign_image } : images.default_campaign_img} style={styles.campaignImg} />
       <View style={styles.campaignDescription}>
-        <Text style={styles.titleText}>Pewdiepie</Text>
-        <Text 
-          style={styles.descriptionText} 
+        <Text style={styles.titleText}>{item.campaign_name}</Text>
+        <Text
+          style={styles.descriptionText}
           numberOfLines={1}
         >
-          Get a chance to win your first order. Have a fun.
+          {item.description}
         </Text>
         <View style={styles.winningList}>
-          <WinningText />
-          <WinningText />
-          <WinningText />
-          <WinningText />
+          {renderWinnings()}
         </View>
       </View>
     </View>

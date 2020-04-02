@@ -53,12 +53,11 @@ const CompanyFormScreen = () => {
   }
 
   onSubmit = (values) => {
-    console.log(values)
-      var body = {
-        email: values.email,
-        phone_number: values.phonenumber,
-        company_name: values.username,
-        message: values.message
+    var body = {
+      email: values.email,
+      phone_number: values.phonenumber,
+      company_name: values.username,
+      message: values.message
     }
     dispatch(companyContact(body))
   }

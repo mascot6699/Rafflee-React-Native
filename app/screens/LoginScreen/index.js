@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavigationActions } from 'react-navigation'
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Image, Keyboard, KeyboardAvoidingView, Platform } from 'react-native'
@@ -34,10 +34,23 @@ const validationSchema = Yup.object().shape({
     .min(2, "Please input correct password")
 })
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
 
   const LOG_IN_PROCESS = useSelector(state => state.userInfo.LOG_IN)
+  const LOG_IN_SUCCESS = useSelector(state => state.userInfo.LOG_IN_SUCCESS)
+  const token = useSelector(state => state.userInfo.token)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (LOG_IN_SUCCESS) {
+      dispatch({ type: 'INIT_STATE', state: 'LOG_IN_SUCCESS', data: false })
+      dispatch(NavigationActions.navigate({ routeName: 'ProfileSummaryScreen' }))
+    }
+  }, [LOG_IN_SUCCESS])
+
+  // useEffect(() => {
+  //   if (token) dispatch(NavigationActions.back())
+  // }, [token])
 
   goBack = () => {
     dispatch(NavigationActions.back())
@@ -54,11 +67,11 @@ const LoginScreen = () => {
   }
 
   goToForgotPassword = () => {
-    dispatch(NavigationActions.navigate({routeName: 'ForgotPasswordScreen'}))
+    dispatch(NavigationActions.navigate({ routeName: 'ForgotPasswordScreen' }))
   }
 
   goToSignIn = () => {
-    dispatch(NavigationActions.navigate({routeName: 'SigninScreen'}))
+    dispatch(NavigationActions.navigate({ routeName: 'SigninScreen' }))
   }
 
   return (
@@ -136,15 +149,15 @@ const LoginScreen = () => {
                     </View>
                   </View>
                   <View>
-                    <Button 
+                    <Button
                       onPress={handleSubmit}
-                      title='Login' 
-                      buttonStyle={globalStyles.blueBtn} 
+                      title='Login'
+                      buttonStyle={globalStyles.blueBtn}
                       titleStyle={globalStyles.blueBtnText}
                       loading={LOG_IN_PROCESS}
                     />
                     <Text style={styles.dontText}>
-                      Don't have an account?  
+                      Don't have an account?
                       <Text style={styles.signInText} onPress={goToSignIn}>  Sign In</Text>
                     </Text>
                   </View>

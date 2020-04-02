@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   winningText: {
     fontFamily: Typography.FONT_FAMILY_REGULAR,
-    fontSize: Typography.FONT_SIZE_10
+    fontSize: Typography.FONT_SIZE_12
   }
 })
 
