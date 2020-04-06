@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     fontSize: Typography.FONT_SIZE_16,
     fontFamily: Typography.FONT_FAMILY_REGULAR,
     color: Colors.GRAY_LIGHT,
+    fontWeight: 'normal'
   },
   inputStyle: {
     fontSize: Typography.FONT_SIZE_16,

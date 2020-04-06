@@ -43,7 +43,7 @@ const apiMiddleware = ({ dispatch }) => next => action => {
       dispatch(onSuccess(data));
     })
     .catch(error => {
-      // console.log(error.response)
+      console.log(error.response)
       if (requireErrorMessage) {
         if (error.response && error.response.data && error.response.data.msg) dispatch(onFailure(error.response.data.msg));
         else dispatch(onFailure(''));

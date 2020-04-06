@@ -1,6 +1,6 @@
-import { Colors, Typography } from '../../utils/styles'
+import { Colors, Typography } from '../../../../utils/styles'
 import { StyleSheet, Platform } from 'react-native'
-import { scaleHeight, scaleWidth } from '../../utils/styles/mixins'
+import { scaleHeight, scaleWidth } from '../../../../utils/styles/mixins'
 
 const styles = StyleSheet.create({
   container: {
@@ -27,29 +27,24 @@ const styles = StyleSheet.create({
     width: scaleHeight(10),
     height: scaleHeight(20)
   },
-  loginForm: {
+  mainContainer: {
     flex: 1,
-    margin: scaleWidth(25),
-    marginBottom: scaleWidth(50)
+    alignItems: 'center',
+    backgroundColor: Colors.GRAY_BG
   },
-  formContainer: {
-    flex: 1, 
-    justifyContent: 'space-between'
-  },
-  labelStyle: {
-    fontSize: Typography.FONT_SIZE_16,
-    fontFamily: Typography.FONT_FAMILY_REGULAR,
-    color: Colors.GRAY_LIGHT,
-    fontWeight: 'normal'
-  },
-  inputStyle: {
-    fontSize: Typography.FONT_SIZE_16,
-    fontFamily: Typography.FONT_FAMILY_REGULAR,
+  codeContainer: {
+    flex: 0,
+    marginTop: scaleHeight(50),
+  },  
+  codeInput: {
+    fontSize: Typography.FONT_SIZE_18,
+    fontFamily: Typography.FONT_FAMILY_BOLD,
     color: Colors.GRAY_DARK
   },
-  containerStyle: {
-    marginBottom: scaleHeight(20)
-  },
+  resendContainer: {
+    width: scaleWidth(120),
+    marginTop: scaleHeight(50),
+  }
 })
 
 export default styles

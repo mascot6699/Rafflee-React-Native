@@ -179,6 +179,8 @@ android {
 }
 
 dependencies {
+    compile "com.android.support:appcompat-v7:27.1.1" // or 27.1.1
+    compile "com.android.support:support-v4:27.1.1" // or 27.1.1
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 

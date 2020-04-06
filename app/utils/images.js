@@ -13,10 +13,14 @@ const images = {
   header_search: require('../assets/images/header/search.png'),
   header_shape: require('../assets/images/header/shape.png'),
   auth_background: require('../assets/images/auth/background.png'),
+  default_profile_img: require('../assets/images/auth/default_profile_img.png'),
   white_left_arrow: require('../assets/images/arrows/white_left_arrow.png'),
   black_right_arrow: require('../assets/images/arrows/black_right_arrow.png'),
   facebook_icon: require('../assets/images/social_icons/facebook_icon.png'),
   google_icon: require('../assets/images/social_icons/google_icon.png'),
+  choose_photo_icon: require('../assets/images/account/plus.png'),
+  verified_icon: require('../assets/images/account/verified.png'),
+  
 }
 
 export default images

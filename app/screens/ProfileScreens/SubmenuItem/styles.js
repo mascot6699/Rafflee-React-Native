@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: scaleHeight(35),
-    paddingBottom: scaleHeight(35),
+    paddingTop: scaleHeight(25),
+    paddingBottom: scaleHeight(25),
     borderBottomColor: Colors.GRAY_BORDER,
     borderBottomWidth: 1
   },

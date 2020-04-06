@@ -21,6 +21,17 @@ const styles = StyleSheet.create({
     fontFamily: Typography.FONT_FAMILY_BOLD,
     fontSize: Typography.FONT_SIZE_18,
     color: Colors.WHITE
+  },
+  whiteBtn: {
+    width: '100%',
+    height: scaleHeight(80),
+    backgroundColor: Colors.WHITE,
+    justifyContent: 'center',
+  },
+  whiteBtnText: {
+    fontFamily: Typography.FONT_FAMILY_REGULAR,
+    fontSize: Typography.FONT_SIZE_18,
+    color: Colors.GRAY_DARK
   }
 })
 

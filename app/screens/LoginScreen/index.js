@@ -49,12 +49,6 @@ const LoginScreen = (props) => {
     }
   }, [LOG_IN_SUCCESS])
 
-  useEffect(() => {
-      // if (isFocused) {
-      //   if (token) navigation.goBack()
-      // }
-  }, [isFocused])
-
   goBack = () => {
     navigation.goBack()
   }

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { useSelector } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient'
 import styles from './styles'
 import Footer from '../../components/Footer'
 import images from '../../utils/images'
+import UserAccountDashboard from './UserAccount'
+import CompanyAccountDashboard from './CompanyAccount'
+
 
 const ProfileSummaryScreen = () => {
+
+  const company = useSelector(state => state.userInfo.company)
 
   return (
     <View style={styles.container}>
@@ -20,9 +26,7 @@ const ProfileSummaryScreen = () => {
         </LinearGradient>
       </View>
       <View style={styles.mainContainer}>
-        <View style={styles.profileImgContainer}>
-          
-        </View>
+        {company ? <CompanyAccountDashboard /> : <UserAccountDashboard />}
       </View>
       <Footer tab='profile' />
     </View>
