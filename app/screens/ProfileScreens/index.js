@@ -20,7 +20,7 @@ const ProfileSummaryScreen = () => {
           <View style={styles.header}>
             <Text style={styles.headerText}>Profile</Text>
             <TouchableOpacity>
-              <Image style={styles.searchImg} source={images.header_search} />
+              <Image style={styles.menudotsImg} source={images.header_menudots} />
             </TouchableOpacity>
           </View>
         </LinearGradient>

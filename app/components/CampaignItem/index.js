@@ -1,12 +1,18 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
+import { View, Image, Text, TouchableOpacity } from 'react-native'
 import WinningText from './winningText'
+import {updateFavorite} from '../../actions/homepage'
 import images from '../../utils/images'
 import styles from './styles'
-import { scaleHeight } from '../../utils/styles/mixins'
 
 const CampaignItem = (props) => {
-  const { item } = props
+  const { item, menuname } = props
+
+  const token = useSelector(state => state.userInfo.token)
+  const company = useSelector(state => state.userInfo.company)
+
+  const dispatch = useDispatch()
 
   renderWinnings = () => {
     return (
@@ -15,11 +21,27 @@ const CampaignItem = (props) => {
       )
     )
   }
+  const update = () => {
+    var body = {
+      promotion_id: item.pk
+    }
+    dispatch(updateFavorite(body, menuname, token))
+  }
+
   return (
     <View style={styles.container}>
       <Image source={item.campaign_image ? { uri: item.campaign_image } : images.default_campaign_img} style={styles.campaignImg} />
       <View style={styles.campaignDescription}>
-        <Text style={styles.titleText}>{item.campaign_name}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Text style={styles.titleText}>{item.campaign_name}</Text>
+          {(token !== '' && company === false) &&
+            <TouchableOpacity onPress={update} activeOpacity={0.8}>
+              <View style={styles.starContainer}>
+                <Image source={item.favorite ? images.trans_star_favorite : images.trans_star} style={styles.starImg} />
+              </View>
+            </TouchableOpacity>
+          }
+        </View>
         <Text
           style={styles.descriptionText}
           numberOfLines={1}

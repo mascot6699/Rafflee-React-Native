@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useIsFocused } from '@react-navigation/native'
 import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Spinner from '../../components/Spinner'
@@ -10,9 +11,10 @@ import {
   getBestPromotions
 } from '../../actions/homepage'
 import CampaignItem from '../../components/CampaignItem'
-import styles from './styles'
 import Footer from '../../components/Footer'
 import images from '../../utils/images'
+import HotPromotionCarousel from './HotPromotionCarousel'
+import styles from './styles'
 
 const MainScreen = ({ navigation }) => {
   const [currentTab, setCurrentTab] = useState('highlight')
@@ -36,7 +38,10 @@ const MainScreen = ({ navigation }) => {
     hot: hotPromotions,
     bestoffer: bestOfferPromotions
 }
-  
+  useEffect(() => {
+    dispatch(getHotPromotions({ token: token }))
+  }, [])
+
   useEffect(() => {
     switch (currentTab) {
       case 'highlight': 
@@ -52,7 +57,7 @@ const MainScreen = ({ navigation }) => {
         dispatch(getHotPromotions({ token: token }))
         break
     }
-  }, [currentTab])
+  }, [currentTab, token])
 
   onChangeTab = (val) => {
     setCurrentTab(val)
@@ -62,10 +67,14 @@ const MainScreen = ({ navigation }) => {
     return (
       (promotionList[currentTab] || []).map((item, index) => 
       <View key={index} style={styles.itemContainer}>
-        <CampaignItem item={item} />
+        <CampaignItem item={item} menuname={currentTab} />
       </View>
       )
     )
+  }
+
+  const goToSearchScreen = () => {
+    navigation.navigate('SearchScreen')
   }
 
   return (
@@ -74,7 +83,7 @@ const MainScreen = ({ navigation }) => {
         <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#00A2FB', '#687def']} style={{flex: 1}}>
           <View style={styles.header}>
             <Text style={styles.headerText}>Deals</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToSearchScreen}>
               <Image style={styles.searchImg} source={images.header_search} />
             </TouchableOpacity>
           </View>
@@ -95,10 +104,11 @@ const MainScreen = ({ navigation }) => {
             <Text style={currentTab === 'bestoffer' ? styles.blueTabText : styles.tabText}>End Soon</Text>
           </TouchableOpacity>
         </View>
+        <HotPromotionCarousel />
         <ScrollView style={styles.scrollView}>
           {(isProcessing_1 || isProcessing_2 || isProcessing_3 || isProcessing_4)
             ?
-            <Spinner size={100} marginTop={100} />
+            <Spinner size={100} marginTop={50} />
             :
             renderPromotionList()
           }

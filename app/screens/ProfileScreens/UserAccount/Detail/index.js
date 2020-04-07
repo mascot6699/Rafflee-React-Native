@@ -143,6 +143,9 @@ const UserAccountScreen = (props) => {
                   <Image style={styles.whiteLeftArrow} source={images.white_left_arrow} />
                 </TouchableOpacity>
                 <Text style={styles.headerText}>Account</Text>
+                <TouchableOpacity>
+                  <Image style={styles.menudotsImg} source={images.header_menudots} />
+                </TouchableOpacity>
               </View>
             </LinearGradient>
           </View>
@@ -328,7 +331,7 @@ const UserAccountScreen = (props) => {
                           labelStyle={styles.labelStyle}
                           inputStyle={styles.inputStyle}
                         />
-                        <View>
+                        <View style={styles.updateBtnContainer}>
                           <Button
                             onPress={handleSubmit}
                             title='Update'

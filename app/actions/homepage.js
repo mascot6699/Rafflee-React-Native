@@ -111,6 +111,25 @@ function onSuccessGetCategories(data) {
       data: data.result_data
   }
 }
+/////////////////////////////////////////////// UPDATE_FAVORITE_ACTION
+export function updateFavorite(params, name, token) {
+  return apiAction({
+      url: APIROUTE + "favorites/update/",
+      method: 'POST',
+      data: qs.stringify(params),
+      accessToken: token,
+      onSuccess: (data) => onSuccessUpdateFavorite(data, name),
+      onFailure: onFailed,
+      label: 'UPDATE_FAVORITE',
+  });
+}
+function onSuccessUpdateFavorite(data, name) {
+  return {
+      type: 'HOME_UPDATE_FAVORITE',
+      arrname: name,
+      id: data.promotion_id
+  }
+}
 
 function apiAction({
   url = "",

@@ -9,7 +9,7 @@ import Footer from '../../components/Footer'
 import images from '../../utils/images'
 import CategoryItem from './CategoryItem'
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
   
   const GET_CATEGORIES_PROCESS = useSelector(state => state.userInfo.GET_CATEGORIES)
   const GET_ALL_PROMOTIONS_PROCESS = useSelector(state => state.userInfo.GET_ALL_PROMOTIONS)
@@ -30,13 +30,17 @@ const CategoriesScreen = () => {
     )
   }
 
+  const goToSearchScreen = () => {
+    navigation.navigate('SearchScreen')
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#00A2FB', '#687def']} style={{flex: 1}}>
           <View style={styles.header}>
             <Text style={styles.headerText}>Categories</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToSearchScreen}>
               <Image style={styles.searchImg} source={images.header_search} />
             </TouchableOpacity>
           </View>

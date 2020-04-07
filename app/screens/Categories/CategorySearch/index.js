@@ -35,7 +35,7 @@ const CategorySearchScreen = (props) => {
     return (
       filter(allPromotions).map((item, index) => 
       <View key={index} style={styles.itemContainer}>
-        <CampaignItem item={item} />
+        <CampaignItem item={item} menuname='all' />
       </View>
       )
     )

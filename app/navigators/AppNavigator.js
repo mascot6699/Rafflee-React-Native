@@ -19,6 +19,8 @@ import CompanyAccountScreen from '../screens/ProfileScreens/CompanyAccount/Detai
 import CategoriesScreen from '../screens/Categories'
 import CategorySearchScreen from '../screens/Categories/CategorySearch'
 import CodeVerificationScreen from '../screens/ProfileScreens/UserAccount/CodeVerification'
+import SocialNetworkScreen from '../screens/ProfileScreens/SocialNetworkScreen'
+import SearchScreen from '../screens/SearchScreen'
 
 const Stack = createStackNavigator();
 
@@ -35,6 +37,8 @@ function App() {
         <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CategorySearchScreen" component={CategorySearchScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CodeVerificationScreen" component={CodeVerificationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SocialNetworkScreen" component={SocialNetworkScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} options={{ headerShown: false }} />
         {!token && <Stack.Screen name="AuthScreen" component={AuthScreen} options={{ headerShown: false }} />}
         {!token && <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />}
         {!token && <Stack.Screen name="SigninScreen" component={SigninScreen} options={{ headerShown: false }} />}

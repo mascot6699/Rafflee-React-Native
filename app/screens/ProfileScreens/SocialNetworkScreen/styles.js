@@ -1,23 +1,20 @@
-import { Colors, Typography } from '../../utils/styles'
+import { Colors, Typography } from '../../../utils/styles'
 import { StyleSheet, Platform } from 'react-native'
-import { scaleHeight, scaleWidth } from '../../utils/styles/mixins'
+import { scaleHeight, scaleWidth } from '../../../utils/styles/mixins'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-  },
-  mainContainer: {
-    flex: 1,
-    backgroundColor: Colors.GRAY_BG
+    backgroundColor: Colors.WHITE
   },
   headerContainer: {
     height: scaleHeight(100)
   },
   header: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(37), 
-    marginLeft: scaleHeight(45), 
+    marginLeft: scaleHeight(25), 
     marginRight: scaleHeight(25)
   },
   headerText: {
@@ -27,14 +24,18 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     textAlign: 'center'
   },
+  whiteLeftArrow: {
+    width: scaleHeight(10),
+    height: scaleHeight(20)
+  },
   menudotsImg: {
     height: scaleHeight(20),
     resizeMode: 'contain'
   },
-  profileImgContainer: {
-    height: scaleHeight(160),
-    backgroundColor: Colors.WHITE
-  }
+  mainContainer: {
+    flex: 1,
+    backgroundColor: Colors.GRAY_BG
+  },
 })
 
 export default styles

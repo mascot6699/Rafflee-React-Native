@@ -57,6 +57,19 @@ const styles = StyleSheet.create({
   winningText: {
     fontFamily: Typography.FONT_FAMILY_REGULAR,
     fontSize: Typography.FONT_SIZE_12
+  },
+  starContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: scaleHeight(25),
+    height: scaleHeight(25),
+    backgroundColor: '#7778ED',
+    borderRadius: scaleHeight(4)
+  },
+  starImg: {
+    width: scaleHeight(15),
+    height: scaleHeight(15),
+    resizeMode: 'stretch'
   }
 })
 

@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: Platform.OS === 'ios' ? scaleHeight(60) : scaleHeight(37),
     marginLeft: scaleHeight(25),
-    marginRight: scaleHeight(35)
+    marginRight: scaleHeight(25)
   },
   headerText: {
     flex: 1,
@@ -32,6 +33,10 @@ const styles = StyleSheet.create({
   whiteLeftArrow: {
     width: scaleHeight(10),
     height: scaleHeight(20)
+  },
+  menudotsImg: {
+    height: scaleHeight(20),
+    resizeMode: 'contain'
   },
   accountForm: {
     flex: 1,
@@ -108,6 +113,12 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: -scaleHeight(7), 
     marginLeft: scaleWidth(9)
+  },
+  updateBtnContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: scaleHeight(40),
   }
 })
 
