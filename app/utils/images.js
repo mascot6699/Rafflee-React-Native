@@ -28,6 +28,7 @@ const images = {
   verified_icon: require('../assets/images/account/verified.png'),
   trans_star: require('../assets/images/other/trans_star.png'),
   trans_star_favorite: require('../assets/images/other/trans_star_favorite.png'),
+  clock_active: require('../assets/images/campaign_detail/clock_active.png'),
 }
 
 export default images

@@ -21,6 +21,7 @@ import CategorySearchScreen from '../screens/Categories/CategorySearch'
 import CodeVerificationScreen from '../screens/ProfileScreens/UserAccount/CodeVerification'
 import SocialNetworkScreen from '../screens/ProfileScreens/SocialNetworkScreen'
 import SearchScreen from '../screens/SearchScreen'
+import CampaignDetailScreen from '../screens/CampaignDetailScreen'
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,7 @@ function App() {
         <Stack.Screen name="CodeVerificationScreen" component={CodeVerificationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="SocialNetworkScreen" component={SocialNetworkScreen} options={{ headerShown: false }} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="CampaignDetailScreen" component={CampaignDetailScreen} options={{ headerShown: false }} />
         {!token && <Stack.Screen name="AuthScreen" component={AuthScreen} options={{ headerShown: false }} />}
         {!token && <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />}
         {!token && <Stack.Screen name="SigninScreen" component={SigninScreen} options={{ headerShown: false }} />}

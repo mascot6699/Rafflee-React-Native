@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   campaignImg: {
     width: scaleWidth(50),
     height: scaleWidth(50),
-    resizeMode: 'cover',
-    borderRadius: scaleWidth(6)
+    resizeMode: 'stretch',
+    borderRadius: scaleWidth(6),
   },
   campaignDescription: {
     flex: 1,
